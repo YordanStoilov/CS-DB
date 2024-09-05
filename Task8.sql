@@ -15,3 +15,10 @@ INSERT INTO Users(Username, Password, LastLoginTime, IsDeleted)
            ('michael_franceze', 'Mafioso0', '2011-04-22', 'true'),
            ('chris_moltisanti', 'Goomar87', '2022-08-14', 'false'),
            ('big_boy_tony', 'Number1!', '1998-09-10', 'true');
+
+ALTER TABLE Users
+    DROP CONSTRAINT PK__Users__3214EC07383CE1B8
+
+ALTER TABLE Users
+    ADD CONSTRAINT PK_Users_Complex
+    PRIMARY KEY(Id, Username);

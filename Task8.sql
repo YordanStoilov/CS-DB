@@ -23,6 +23,11 @@ ALTER TABLE Users
     ADD CONSTRAINT PK_Users_Complex
     PRIMARY KEY(Id, Username);
 
--- ALTER TABLE Users
---     ADD CONSTRAINT PasswordIsAtLeast5Characters
---     (CHECK DATALENGTH(Password) >= 5);
+ALTER TABLE Users
+    ADD CONSTRAINT PasswordIsAtLeast5Characters
+    CHECK (DATALENGTH(Password) >= 5);
+
+ALTER TABLE Users
+    ADD CONSTRAINT DefaultValueLastLoginTime
+        DEFAULT GETDATE() FOR LastLoginTime;
+

@@ -29,5 +29,19 @@ ALTER TABLE Users
 
 ALTER TABLE Users
     ADD CONSTRAINT DefaultValueLastLoginTime
-        DEFAULT GETDATE() FOR LastLoginTime;
+    DEFAULT GETDATE() FOR LastLoginTime;
 
+ALTER TABLE Users
+    DROP CONSTRAINT PK_Users_Complex;
+
+ALTER TABLE Users
+    ADD CONSTRAINT PK_Id
+    PRIMARY KEY CLUSTERED (Id);
+
+ALTER TABLE Users
+    ADD CONSTRAINT UsernameMustBeUnique
+    UNIQUE (Username);
+
+ALTER TABLE Users
+    ADD CONSTRAINT UsernameMustBeAtLeast3Characters
+    CHECK (DATALENGTH(Username) >= 3);

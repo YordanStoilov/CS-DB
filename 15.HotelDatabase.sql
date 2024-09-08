@@ -1,3 +1,4 @@
+
 CREATE TABLE Employees(
     Id INT IDENTITY PRIMARY KEY NOT NULL,
     FirstName VARCHAR(255) NOT NULL,
@@ -32,11 +33,11 @@ CREATE TABLE BedTypes(
 )
 
 CREATE TABLE Rooms (
-    RoomNumber INT IDENTITY PRIMARY KEY NOT NULL,
-    RoomType VARCHAR(255) FOREIGN KEY REFERENCES RoomTypes(RoomType) NOT NULL,
-    BedType VARCHAR(255) FOREIGN KEY REFERENCES BedTypes(BedType) NOT NULL,
+    RoomNumber INT PRIMARY KEY NOT NULL,
+    RoomType VARCHAR(255) NOT NULL,
+    BedType VARCHAR(255) NOT NULL,
     Rate FLOAT NOT NULL,
-    RoomStatus VARCHAR(50) FOREIGN KEY REFERENCES RoomStatus(RoomStatus) NOT NULL,
+    RoomStatus VARCHAR(50) NOT NULL,
     Notes VARCHAR(255)
 )
 
@@ -60,7 +61,7 @@ CREATE TABLE Occupancies (
     EmployeeId INT FOREIGN KEY REFERENCES Employees(Id) NOT NULL,
     DateOccupied DATETIME NOT NULL,
     AccountNumber INT FOREIGN KEY REFERENCES Customers(AccountNumber) NOT NULL,
-    RoomNumber INT FOREIGN KEY REFERENCES Rooms(RoomNumber),
+    RoomNumber INT NOT NULL,
     RateApplied FLOAT NOT NULL,
     PhoneCharge VARCHAR(50),
     Notes VARCHAR(255) 

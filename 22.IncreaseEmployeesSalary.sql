@@ -1,5 +1,5 @@
-UPDATE Employees
-SET Salary = Salary * 1.10;
 
-SELECT Salary 
-FROM Employees;
+UPDATE Employees
+SET Salary = 1.10 * Salary;
+
+SELECT Salary FROM Employees;

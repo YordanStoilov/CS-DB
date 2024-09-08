@@ -1,8 +1,4 @@
 
--- •	Towns – Name
--- •	Departments – Name
--- •	Employees – FirstName, LastName, JobTitle, Salary
-
 SELECT Name FROM Towns
     ORDER BY Name ASC;
 

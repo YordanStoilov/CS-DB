@@ -26,4 +26,3 @@ CREATE TABLE Employees (
     Salary FLOAT NOT NULL,
     AddressId INT NOT NULL FOREIGN KEY REFERENCES Addresses(Id)
 )
-

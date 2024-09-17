@@ -6,15 +6,8 @@
 
 CREATE OR ALTER PROC usp_EmployeesBySalaryLevel @LevelOfSalary VARCHAR(10)
 AS
-SELECT
-    FirstName,
-    LastName
-FROM  
-(
     SELECT
     FirstName,
-    LastName,
-    dbo.ufn_GetSalaryLevel(Salary) AS [SalaryLevel]
+    LastName
 FROM Employees
-) AS dt
-WHERE dt.SalaryLevel = @LevelOfSalary
+WHERE dbo.ufn_GetSalaryLevel(Salary) = @LevelOfSalary

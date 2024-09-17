@@ -16,3 +16,7 @@ AS
             ELSE SET @Result = 'High'
         RETURN @Result
     END
+GO
+
+SELECT FirstName, LastName, dbo.ufn_GetSalaryLevel(Salary) AS [Salary Level]
+FROM Employees

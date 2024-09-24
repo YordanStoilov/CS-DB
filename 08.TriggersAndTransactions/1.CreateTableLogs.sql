@@ -12,7 +12,7 @@ AS
 BEGIN
     INSERT INTO Logs(AccountId, OldSum, NewSum)
         SELECT
-            d.Id AS [AccountId],
+            d.AccountHolderId [AccountId],
             d.Balance AS [OldSum],
             i.Balance AS [NewSum]
         FROM

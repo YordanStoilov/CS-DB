@@ -1,11 +1,8 @@
-
 SELECT 
-dt.FullName,
-dt.Email,
-dt.Rating
-
+    dt.FullName,
+    dt.Email,
+    dt.Rating
 FROM
-
 (
     SELECT 
         CONCAT_WS(' ', c.FirstName, c.LastName) AS FullName,
@@ -18,5 +15,9 @@ FROM
     ON cb.BoardgameId = b.Id
     GROUP BY FirstName, LastName, Email
 ) AS dt
-WHERE dt.Email LIKE '%.com'
-ORDER BY FullName
+WHERE 
+    dt.Email 
+LIKE 
+    '%.com'
+ORDER BY
+    FullName

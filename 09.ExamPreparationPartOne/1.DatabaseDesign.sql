@@ -1,0 +1,58 @@
+
+CREATE TABLE Categories
+(
+    Id INT IDENTITY PRIMARY KEY,
+    [Name] NVARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Addresses
+(
+    Id INT IDENTITY PRIMARY KEY,
+    StreetName NVARCHAR(100) NOT NULL,
+    StreetNumber INT NOT NULL,
+    Town NVARCHAR(30) NOT NULL,
+    Country NVARCHAR(50) NOT NULL,
+    ZIP INT NOT NULL
+)
+
+CREATE TABLE Publishers
+(
+    Id INT IDENTITY PRIMARY KEY,
+    [Name] NVARCHAR(30) NOT NULL,
+    AddressId INT UNIQUE NOT NULL FOREIGN KEY REFERENCES Addresses(Id),
+    Website NVARCHAR(40),
+    Phone NVARCHAR(20)
+)
+
+CREATE TABLE PlayersRanges
+(
+    Id INT IDENTITY PRIMARY KEY,
+    PlayersMin INT NOT NULL,
+    PlayersMax INT NOT NULL
+)
+
+CREATE TABLE Boardgames
+(
+    Id INT IDENTITY PRIMARY KEY,
+    [Name] NVARCHAR(30) NOT NULL,
+    YearPublished INT NOT NULL,
+    Rating DECIMAL(4, 2) NOT NULL,
+    CategoryId INT NOT NULL FOREIGN KEY REFERENCES Categories(Id),
+    PublisherId INT NOT NULL FOREIGN KEY REFERENCES Publishers(Id),
+    PlayersRangeId INT NOT NULL FOREIGN KEY REFERENCES PlayersRanges(Id)
+)
+
+CREATE TABLE Creators
+(
+    Id INT IDENTITY PRIMARY KEY,
+    FirstName NVARCHAR(30) NOT NULL,
+    LastName NVARCHAR(30) NOT NULL,
+    Email NVARCHAR(30) NOT NULL
+)
+
+CREATE TABLE CreatorsBoardgames
+(
+    CreatorId INT FOREIGN KEY REFERENCES Creators(Id),
+    BoardgameId INT FOREIGN KEY REFERENCES Boardgames(Id),
+    PRIMARY KEY (CreatorId, BoardgameId)
+)

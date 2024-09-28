@@ -1,0 +1,11 @@
+CREATE TABLE Categories
+(
+    Id INT IDENTITY PRIMARY KEY,
+    [Name] NVARCHAR(50) NOT NULL
+)
+
+CREATE TABLE Addresses
+(
+    Id INT IDENTITY PRIMARY KEY,
+    
+)

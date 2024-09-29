@@ -1,3 +1,5 @@
+USE Accounting
+
 CREATE TABLE Countries
 (
     Id INT IDENTITY PRIMARY KEY,

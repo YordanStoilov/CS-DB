@@ -1,0 +1,8 @@
+UPDATE Invoices
+SET DueDate = '2023-04-01'
+WHERE IssueDate BETWEEN '2022-11-01' AND '2022-11-30 23:59:59.9999999';
+
+UPDATE Clients
+SET AddressId = 3
+WHERE [Name] LIKE '%CO%'
+
